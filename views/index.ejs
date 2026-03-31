@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Meine Bücherliste</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <h1>Meine Bücherliste</h1>
+  <a href="/neu">+ Neues Buch hinzufügen</a>
+
+  <hr>
+
+  <input type="text" id="suchfeld" placeholder="Bücher durchsuchen..." onkeyup="filterBuecher()">
+
+  <% if (buecher.length === 0) { %>
+    <p>Noch keine Bücher in der Liste.</p>
+  <% } else { %>
+    <ul id="buecherliste">
+      <% buecher.forEach(function(buch) { %>
+        <li class="buch-eintrag">
+          <strong class="buch-titel"><%= buch.titel %></strong> von <span class="buch-autor"><%= buch.autor %></span>
+          <% if (buch.seiten) { %>
+            (<%= buch.seiten %> Seiten)
+          <% } %>
+          <% if (buch.gelesen) { %>
+            ✓ gelesen
+          <% } else { %>
+            - noch nicht gelesen
+          <% } %>
+
+          <a href="/buch/<%= buch._id %>/bearbeiten">Bearbeiten</a>
+
+          <form action="/buch/<%= buch._id %>/loeschen" method="POST" style="display:inline" onsubmit="return loeschenBestaetigen()">
+            <button type="submit">Löschen</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <script src="/app.js"></script>
+
+</body>
+</html>

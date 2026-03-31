@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Neues Buch</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <h1>Neues Buch hinzufügen</h1>
+
+  <form action="/buch" method="POST">
+    <label>Titel:</label><br>
+    <input type="text" name="titel" required><br><br>
+
+    <label>Autor:</label><br>
+    <input type="text" name="autor" required><br><br>
+
+    <label>Seitenanzahl:</label><br>
+    <input type="number" name="seiten"><br><br>
+
+    <label>
+      <input type="checkbox" name="gelesen">
+      Bereits gelesen
+    </label><br><br>
+
+    <button type="submit">Speichern</button>
+    <a href="/">Abbrechen</a>
+  </form>
+
+</body>
+</html>

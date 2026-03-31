@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Buch bearbeiten</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <h1>Buch bearbeiten</h1>
+
+  <form action="/buch/<%= buch._id %>/bearbeiten" method="POST">
+    <label>Titel:</label><br>
+    <input type="text" name="titel" value="<%= buch.titel %>" required><br><br>
+
+    <label>Autor:</label><br>
+    <input type="text" name="autor" value="<%= buch.autor %>" required><br><br>
+
+    <label>Seitenanzahl:</label><br>
+    <input type="number" name="seiten" value="<%= buch.seiten || '' %>"><br><br>
+
+    <label>
+      <input type="checkbox" name="gelesen" <%= buch.gelesen ? 'checked' : '' %>>
+      Bereits gelesen
+    </label><br><br>
+
+    <button type="submit">Speichern</button>
+    <a href="/">Abbrechen</a>
+  </form>
+
+</body>
+</html>
